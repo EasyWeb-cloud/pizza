@@ -1,6 +1,7 @@
 import React , {useEffect , useState} from 'react'
 import {Route} from 'react-router-dom'
 import axios from 'axios'
+import {connect} from 'react-redux'
 
 import {Header} from './components'
 import {Home , Cart} from './pages'
@@ -11,7 +12,6 @@ const App = () => {
   useEffect(() => {
     axios.get('http://localhost:3000/db.json').then(({data}) => setPizzas(data.pizzas))
   } , [])
-  console.log(pizzas)
 
   return (
     <div className="wrapper">
@@ -24,4 +24,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default connect()(App);
